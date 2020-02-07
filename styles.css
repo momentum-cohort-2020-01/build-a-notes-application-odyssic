@@ -1,7 +1,11 @@
 input {
     width: 100%;
-    background-color: #3CBC8D;
-    color: white
+    color: black
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
 }
 
 button {
@@ -43,18 +47,19 @@ hr {
 
 .container {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
     justify-content: flex-start;
     align-items: top;
     /* border: solid red 2px; */
 }
 
 .new-note-space {
-    flex-basis: 400px;
+    /* flex-basis: 400px; */
     flex-shrink: 1.5;
     order: 1;
     /* border: solid red; */
     width: 300px;
+    padding-bottom: 0;
 }
 
 .note-list {
