@@ -12,12 +12,21 @@ container.addEventListener("submit", event => {
     console.log("submit button pressed");
 });
 
-fetch("http://localhost:3000/notes/")
-    .then(resp => resp.json())
-    .then(function(data) {
-        let notes = data;
-        console.log(data);
-    });
+getAllNotes();
+
+function getAllNotes() {
+    return fetch("http://localhost:3000/notes/", {
+        method: "GET"
+    }).then(response => response.json());
+
+    let notes = response.json();
+
+    const list = $("#list");
+    const newListItem = document.createElement("li");
+    list.appendChild(newListItem);
+    newListItem.innerHTML = notes;
+    console.log(notes);
+}
 
 // fetch('http://localhost:3000/notes/', {
 //   method: 'POST',
