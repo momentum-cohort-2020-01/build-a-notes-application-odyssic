@@ -18,12 +18,12 @@
         <!-- <hr /> -->
         <section id="new-note-space" class="new-note-space">
             <form id="new-note">
-                <input type="text" id="title" placeholer="Title" ROWS="10" COLS="40" />
-                <input type="text" id="body" minlength="1" required placeholder="What's happening?" ROWS="10" COLS="40" />
+                <input type="text" class="title-input" id="title" placeholder="Title your Note" minlength="1" />
+                <input type="text" id="body" minlength="1" required placeholder="What's happening?" class="note-input" />
 
                 <!-- <button class="button ">delete</button>
                 <button class="button ">edit</button> -->
-                <input type="submit" value="Post New Note" />
+                <input id="submit-button" class="button" type="submit" click="submit" value="submit" />
             </form>
         </section>
 
