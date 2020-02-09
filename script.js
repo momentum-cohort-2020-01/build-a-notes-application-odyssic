@@ -16,17 +16,34 @@ getAllNotes();
 
 function getAllNotes() {
     return fetch("http://localhost:3000/notes/", {
-        method: "GET"
-    }).then(response => response.json());
+            method: "GET"
+        })
+        .then(response => response.json())
 
-    let notes = response.json();
+    .then(function(data) {
+        const list = $("#list");
+        const newListItem = document.createElement("li");
+        list.appendChild(newListItem);
+        newListItem.innerText = data[0].body;
 
-    const list = $("#list");
-    const newListItem = document.createElement("li");
-    list.appendChild(newListItem);
-    newListItem.innerHTML = notes;
-    console.log(notes);
+        console.log(data[0].body);
+    });
 }
+
+// fetch(url)
+//     .then((resp) => resp.json()) // Transform the data into json
+//     .then(function(data) {
+//         // Create and append the li's to the ul
+//     })
+// })
+
+// fetch('http://example.com/movies.json')
+// .then((response) => {
+//     return response.json();
+// })
+// .then((myJson) => {
+//     console.log(myJson);
+// });
 
 // fetch('http://localhost:3000/notes/', {
 //   method: 'POST',
