@@ -11,8 +11,10 @@ const form = $("#new-note");
 
 form.addEventListener("submit", event => {
     event.preventDefault();
-    postNewNote();
+    postNewNote(title, noteText);
     console.log("submit button pressed");
+    console.log("submit button console: title " + $("#title").value);
+    console.log("submit button console: body " + $("#body").value);
 
     // return false;
 });
@@ -32,86 +34,45 @@ function getAllNotes() {
         newListItem.innerText = data[0].body;
 
         console.log(data[0].body);
+        console.log("get all notes function called");
     });
 }
 
-function postNewNote() {
+// const nowMoment = moment();
+
+const noteText = $("#body").value;
+title = $("#title").value;
+
+postNewNote();
+
+function postNewNote(title, noteText) {
+    console.log("postNewNote called");
     fetch("http://localhost:3000/notes/", {
-            method: "POST",
-            body: JSON.stringify({}),
-            headers: { "Content-Type": "application/json" }
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            title: title,
+            body: noteText,
+            created: moment().format()
         })
-        .then(function(data) {
-            console.log(data);
-        })
-        .catch(function(data) {
-            console.log(data);
-        });
+
+            .then(data => {
+                console.log(data);
+            })
+            .then(res => res.JSON())
+    });
 }
 
-// const formData = new FormData();
-// const photos = document.querySelector('input[type="file"][multiple]');
-
-// formData.append('title', 'My Vegas Vacation');
-// for (let i = 0; i < photos.files.length; i++) {
-//     formData.append('photos', photos.files[i]);
-// }
-
-// fetch('https://example.com/posts', {
-//             method: 'POST',
-//             body: formData,
-
-// etch("/echo/json/", {
-//         headers: {
-//             Accept: "application/json",
-//             "Content-Type": "application/json"
-//         },
-//         method: "POST",
-//         body: JSON.stringify({ a: 1, b: 2 })
-//     })
-//     .then(function(res) {
-//         console.log(res);
-//     })
-//     .catch(function(res) {
-//         console.log(res);
-//     });
-
-// note data then index of note then .key
-
-// fetch(url)
-//     .then((resp) => resp.json()) // Transform the data into json
-//     .then(function(data) {
-//         // Create and append the li's to the ul
-//     })
-// })
-
-// fetch('http://example.com/movies.json')
-// .then((response) => {
-//     return response.json();
-// })
-// .then((myJson) => {
-//     console.log(myJson);
-// });
-
-// fetch('http://localhost:3000/notes/', {
-//   method: 'POST',
-//   headers: {"Content-Type": "application/json"},
-//   body: JSON.stringify({"title": "Hi", "body": "COOL"})
-// })
-// .then(r => r.json())
-// .then(
-//   // whatever you need to do next
-// )
-
-// function postNewNote(noteText) {
-//     return fetch('http://localhost:3000/notes/', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({
-//             "body": noteText,
-//             "created": moment().format()
-
-//         })
-
-//     });
-// }\
+function postNewNote(titleText, noteText) {
+    return fetch("http://localhost:3000/notes/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            title: titleText,
+            note: noteText,
+            created: moment().format()
+        })
+    }).then(response => response.json());
+    console.log(titleText);
+    console.log(noteText);
+}

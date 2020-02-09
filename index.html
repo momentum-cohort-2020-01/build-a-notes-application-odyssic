@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <script src="script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
     <title>NotePad</title>
 </head>
 
@@ -17,8 +18,9 @@
         <!-- <hr /> -->
         <section id="new-note-space" class="new-note-space">
             <form id="new-note">
-                New Note: <br />
-                <input type="text" id="note-text" minlength="1" required placeholder="What's happening?" ROWS="10" COLS="40" />
+                <input type="text" id="title" placeholer="Title" ROWS="10" COLS="40" />
+                <input type="text" id="body" minlength="1" required placeholder="What's happening?" ROWS="10" COLS="40" />
+
                 <!-- <button class="button ">delete</button>
                 <button class="button ">edit</button> -->
                 <input type="submit" value="Post New Note" />
