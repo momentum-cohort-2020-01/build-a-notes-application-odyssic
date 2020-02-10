@@ -21,64 +21,52 @@ form.addEventListener("submit", event => {
     // return false;
 });
 
+const fetchUrl = "http://localhost:3000/notes/"
+
 getAllNotes();
 
 function getAllNotes() {
-    return fetch("http://localhost:3000/notes/", {
+    fetch(fetchUrl, {
             method: "GET"
         })
         .then(response => response.json())
 
-    .then(function(data) {
-        const list = $("#list");
-        const newListItem = document.createElement("li");
-        list.appendChild(newListItem);
-        newListItem.innerText = data[0].body;
-        // document.createElement("img");
-        // img.src = "trash-can-small.gif";
-        // newListItem.insertAdjacentElement(img, "afterend");
-
-        console.log(data[0].body);
-        console.log("get all notes function called");
+    .then(function(dataSet) {
+        dataSet.map(dataSet => {
+            createList();
+        });
     });
 }
+const dataSet = {};
 
-// const nowMoment = moment();
+function createList() {
+    const list = $("#list");
+    const newListItem = document.createElement("li");
+    list.appendChild(newListItem);
+    newListItem.innerText = (dataSet.body, dataSet.title, dataSet.created);
+}
 
 const title = $("#title").value;
 const body = $("#body").value;
 console.log(moment().format("LLLL"));
+const now = moment().format("LLLL");
 
 function postNewNote(title, body) {
     console.log("postNewNote called");
-    fetch("http://localhost:3000/notes/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            title: title,
-            body: body,
-            created: moment().format("LLLL")
+    fetch(fetchUrl, {
+
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                title: title,
+                body: body,
+                created: moment().format("LLLL")
+            })
         })
-    }).then(response => response.json());
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            console.log(data.title)
+
+        })
 }
-
-// .then(res => res.JSON())
-// .then(renderedNote => {
-//     getAllNotes();
-// })
-// });
-// }
-
-// function postNewNote(titleText, noteText) {
-//     return fetch("http://localhost:3000/notes/", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({
-//             title: titleText,
-//             note: noteText,
-//             created: moment().format()
-//         })
-//     }).then(response => response.json());
-//     console.log(titleText);
-//     console.log(noteText);
-// }
