@@ -7,6 +7,27 @@ input {
     box-sizing: border-box;
 }
 
+.title {
+    size: 115%;
+    font-weight: bolder;
+    padding-bottom: 3px;
+    padding-top: 12px;
+}
+
+.body {
+    size: 92%;
+    font-weight: normal;
+    padding-bottom: 3px;
+}
+
+.date {
+    size: 33%;
+    text-transform: uppercase;
+    color: #53a7ea;
+    padding-bottom: 6px;
+    font-size: 66%;
+}
+
 input-placeholder {
     color: gray;
     font-size: 20em;
@@ -41,8 +62,22 @@ button {
     border: 1px solid #53a7ea;
     border-radius: 4px;
     padding: 0 15px;
+    width: 32em;
     cursor: pointer;
-    height: 32px;
+    height: 38.5px;
+    font-size: 14px;
+    transition: all 0.2s ease-in-out;
+    opacity: .5;
+}
+
+.button-smaller {
+    color: #53a7ea;
+    background-color: white;
+    border: 1px solid #53a7ea;
+    border-radius: 4px;
+    width: 6em;
+    cursor: pointer;
+    height: 38.5px;
     font-size: 14px;
     transition: all 0.2s ease-in-out;
     opacity: .5;
@@ -92,7 +127,9 @@ hr {
 .note-list {
     order: 2;
     /* border: solid red; */
-    width: 200px;
+    width: 40em;
+    color: gray;
+    height: 40em;
 }
 
 .standardText {
