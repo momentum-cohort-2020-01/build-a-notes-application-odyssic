@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 input {
     width: 100%;
     color: rgba(0, 0, 0, 0.879);
@@ -70,17 +76,32 @@ button {
     opacity: .5;
 }
 
-.button-smaller {
+.button-edit {
     color: #53a7ea;
     background-color: white;
     border: 1px solid #53a7ea;
     border-radius: 4px;
     width: 6em;
     cursor: pointer;
-    height: 38.5px;
+    height: 20px;
     font-size: 14px;
     transition: all 0.2s ease-in-out;
     opacity: .5;
+    margin: 4px;
+}
+
+.button-delete {
+    color: white;
+    background-color: #53a7ea;
+    border: 1px solid #53a7ea;
+    border-radius: 4px;
+    width: 6em;
+    cursor: pointer;
+    height: 20px;
+    font-size: 14px;
+    transition: all 0.2s ease-in-out;
+    opacity: .5;
+    margin: 4px;
 }
 
 button:hover {
@@ -112,6 +133,15 @@ hr {
     flex-flow: column wrap;
     justify-content: flex-start;
     align-items: top;
+    /* border: solid red 2px; */
+}
+
+.button-container {
+    display: flex;
+    flex-flow: row no-wrap;
+    justify-content: flex-start;
+    align-items: top;
+    padding: 5px;
     /* border: solid red 2px; */
 }
 

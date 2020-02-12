@@ -56,15 +56,19 @@ function createList(note) {
     bodyDiv = listItemContainer.appendChild(newBody);
     dateDiv = listItemContainer.appendChild(newDate);
 
-    const deleteButton = document.createElement('button')
-    deleteButton.textContent = 'Delete'
-    listItemContainer.insertAdjacentElement("afterend", deleteButton)
-    deleteButton.classList.add('button-smaller')
+    buttonContainer = document.createElement('div')
+    listItemContainer.appendChild(buttonContainer)
+    buttonContainer.classList.add('button-container')
 
     const editButton = document.createElement('button')
-    deleteButton.textContent = 'Edit'
-    listItemContainer.insertAdjacentElement("afterend", editButton)
-    editButton.classList.add('button-smaller')
+    editButton.textContent = 'edit'
+    buttonContainer.insertAdjacentElement("beforeEnd", editButton)
+    editButton.classList.add('button-edit')
+
+    const deleteButton = document.createElement('button')
+    deleteButton.textContent = 'delete'
+    buttonContainer.insertAdjacentElement("beforeEnd", deleteButton)
+    deleteButton.classList.add('button-delete')
 
     titleDiv.classList.add('title')
     bodyDiv.classList.add('body')
